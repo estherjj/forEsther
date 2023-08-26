@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-  <!-- LOGO -->
   <div class="app-brand demo logo-link">
     <a href="index.html" class="app-brand-link">
       <span class="app-brand-logo demo">
@@ -82,20 +81,15 @@
       >
     </a>
   </div>
-  <!-- // LOGO -->
 
-  <!-- Menu list -->
   <ul class="menu-inner py-1">
-    <!-- 대시보드 -->
     <li class="menu-item ">
       <a href="/item/list" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">대시보드</div>
       </a>
     </li>
-    <!-- // 대시보드 -->
-
-    <!-- 재고관리 -->
+ 
     <li class="menu-item">
       <a href="/item/list" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -125,9 +119,7 @@
         </li>
       </ul>
     </li>
-    <!-- // 재고관리 -->
-
-    <!-- 생산관리 -->
+   
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -142,9 +134,7 @@
         </li>
       </ul>
     </li>
-    <!-- // 생산관리 -->
-
-    <!-- 구매관리 -->
+   
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -179,9 +169,7 @@
         </li>
       </ul>
     </li>
-    <!-- // 구매관리 -->
-
-    <!-- 판매관리 -->
+  
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -201,6 +189,6 @@
         </li>
       </ul>
     </li>
-    <!-- // 판매관리 -->
+
   </ul>
 </aside>

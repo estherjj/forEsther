@@ -43,6 +43,8 @@ public class ItemController {
 		model.addAttribute("data", service.searchItem(searchType, searchValue));
 		return "item/itemList";
 	}
+	
+
 
 }
 

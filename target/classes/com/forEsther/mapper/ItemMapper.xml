@@ -18,41 +18,45 @@
 		<result column="address" property="address" />
 	</resultMap>
 
-	<resultMap
-		type="com.forEsther.vo.itemsuppliervo.ItemSupplierVO"
-		id="ItemSupplierVO">
-		<result column="item_supplier_code"
-			property="item_supplier_code" />
-		<result column="supplier_code" property="supplier_code" />
-		<result column="item_code" property="item_code" />
-		<collection property="supplier_vo" resultMap="SupplierVO" />
+	<resultMap type="com.forEsther.vo.itemsuppliervo.ItemSupplierVO" id="ItemSupplierVO">
+	    <result column="item_supplier_code" property="item_supplier_code" />
+	    <result column="supplier_code" property="supplier_code" />
+	    <result column="item_code" property="item_code" />
+	   <association property="supplier_vo" javaType="com.forEsther.vo.suppliervo.SupplierVO">
+	        <result property="supplier_name" column="supplier_name" />
+	        <result property="contact_person" column="contact_person" />
+	        <result property="contact_number" column="contact_number" />
+	        <result property="address" column="address" />
+	    </association>
 	</resultMap>
 
 	<resultMap type="com.forEsther.vo.itemvo.ItemVO" id="ItemVO">
-		<result column="item_code" property="item_code" />
-		<result column="item_name" property="item_name" />
-		<result column="item_specification"
-			property="item_specification" />
-		<result column="safety_stock" property="safety_stock" />
-		<result column="serial_lot_status" property="serial_lot_status" />
-		<result column="procurement" property="procurement" />
-		<result column="item_classification"
-			property="item_classification" />
-		<collection property="itemsupplier_vo"
-			resultMap="ItemSupplierVO" />
+	    <result column="item_code" property="item_code" />
+	    <result column="item_name" property="item_name" />
+	    <result column="item_specification" property="item_specification" />
+	    <result column="safety_stock" property="safety_stock" />
+	    <result column="serial_lot_status" property="serial_lot_status" />
+	    <result column="procurement" property="procurement" />
+	    <result column="item_classification" property="item_classification" />
+	    <collection property="itemsupplier_vo" resultMap="ItemSupplierVO" />
 	</resultMap>
 
 	<select id="getItemList" resultMap="ItemVO">
-		SELECT 
-			i.item_code,
-			i.item_classification,
-			i.item_name,
-			i.item_specification,
-			i.safety_stock,
-			su.supplier_name
-		FROM tbl_items i
-		LEFT JOIN tbl_item_supplier isu ON i.item_code = isu.item_code
-		LEFT JOIN tbl_supplier su ON isu.supplier_code = su.supplier_code
+	    SELECT DISTINCT
+	        i.item_code,
+	        i.item_classification,
+	        i.item_name,
+	        i.item_specification,
+	        i.safety_stock,
+	        isu.item_supplier_code,
+	        su.supplier_name,
+	        su.supplier_code,
+	        su.contact_person,
+	        su.contact_number,
+	        su.address
+	    FROM tbl_items i
+	    LEFT JOIN tbl_item_supplier isu ON i.item_code = isu.item_code
+	    LEFT JOIN tbl_supplier su ON isu.supplier_code = su.supplier_code
 	</select>
 	
 	<select id="getItemDetail" resultMap="ItemVO">

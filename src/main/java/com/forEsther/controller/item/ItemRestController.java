@@ -27,10 +27,12 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ItemRestController {
 	private ItemService service;
+	
 
 	@GetMapping("/detail")
 	public ItemVO getItemDetail(@RequestParam("itemCode") String itemCode) {
 		log.info("✅ [GET/Controller] 품목 상세 조회 ...");
+		log.info(itemCode);
 		return service.getItemDetail(itemCode);
 	}
 	
@@ -52,9 +54,14 @@ public class ItemRestController {
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-//	@GetMapping("/modify")
-//	public ItemVO getItemModify(@RequestParam("itemCode") String itemCode) {
-//		log.info("✅ [GET/Controller] 수정할 상품 조회 ...");
-//		return service.getItemDetail(itemCode);
-//	}
+//	===================================================================================
+	
+	@GetMapping("/data")
+    public ResponseEntity<Object> getJsonData() {
+        List jsonData = service.getItemList();
+
+        log.info(jsonData);
+        // ResponseEntity를 사용하여 JSON 데이터와 HTTP 상태 코드를 반환한다.
+        return new ResponseEntity<>(jsonData, HttpStatus.OK);
+    }
 }
